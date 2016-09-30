@@ -26,10 +26,11 @@ public class IDE extends javax.swing.JFrame {
     public IDE() {
         initComponents();
         jTextArea1.setText("display 800,600\n" +
-"draw{\n" +
-" fill 123,123,123\n" +
-" rect 12,12,50,50\n" +
-"}");
+                            "draw{\n" +
+                            " fill 123,123,123\n" +
+                            " rect 12,12,50,50\n" +
+                            "}");
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -48,6 +49,8 @@ public class IDE extends javax.swing.JFrame {
         jTextArea2 = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("CodeCAD");
+        setResizable(false);
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
