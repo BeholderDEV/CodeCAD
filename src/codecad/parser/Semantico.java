@@ -4,6 +4,6 @@ public class Semantico implements Constants
 {
     public void executeAction(int action, Token token)	throws SemanticError
     {
-        System.out.println("Aï¿½ï¿½o #"+action+", Token: "+token);
+        System.out.println("Ação #"+action+", Token: "+token);
     }	
 }
