@@ -5,6 +5,7 @@
  */
 package codecad.controller;
 
+import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JPanel;
@@ -48,7 +49,7 @@ public class ImageController {
     }
     
     public void setBackgroundColor(){
-        
+        this.painelImagem.setBackground(Color.red);
         this.parametros.clear();
     }
     

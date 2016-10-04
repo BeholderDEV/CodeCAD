@@ -20,12 +20,14 @@ public class IDEWindowController {
     private CommandListWindow listWindow;
     private ImageController imageController;
     private Lexico lexico = new Lexico();
-    private Sintatico sintatico = new Sintatico();
-    private Semantico semantico = new Semantico(this, this.imageController);
+    private Sintatico sintatico;
+    private Semantico semantico;
     
     public IDEWindowController(IDEWindow mainWindow) {
         this.mainWindow = mainWindow;
-        imageController = new ImageController(this.mainWindow.getPainelImagem());
+        this.imageController = new ImageController(this.mainWindow.getPainelImagem());
+        this.semantico = new Semantico(this, this.imageController);
+        this.sintatico = new Sintatico();
         this.mainWindow.setLocationRelativeTo(null);
     }
 
