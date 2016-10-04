@@ -55,6 +55,11 @@ public class ImageController {
         this.nomeNovaVariavel = nomeNovaVariavel;
     }
     
+    public void setTamanhoTela(){
+        imagem = new BufferedImage(parametros.get(0), parametros.get(1), BufferedImage.TYPE_INT_ARGB);
+        parametros.clear();
+    }
+    
     public void setCaminhoNovaVariavel(String caminho){
         this.caminhoNovaVariavel = caminho;
     }
@@ -70,7 +75,10 @@ public class ImageController {
     }
     
     public void setBackgroundColor(){
-        this.painelImagem.setBackground(new Color(this.parametros.get(0), this.parametros.get(1), this.parametros.get(2)));
+        this.prepararDesenho();
+        this.g.setColor(new Color(this.parametros.get(0), this.parametros.get(1), this.parametros.get(2), this.alfa));
+        this.g.fillRect(0,0,imagem.getWidth(), imagem.getHeight());
+        this.finalizarDesenho();
         this.parametros.clear();
     }
     
@@ -102,7 +110,7 @@ public class ImageController {
     }
     
     private void prepararDesenho(){
-        if(this.painelImagem.getComponentCount() == 0){
+        if(imagem == null){
             this.imagem = new BufferedImage(this.painelImagem.getWidth(), this.painelImagem.getHeight(), BufferedImage.TYPE_4BYTE_ABGR);
         }
         this.painelImagem.removeAll();

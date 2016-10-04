@@ -73,7 +73,7 @@ public class IDEWindow extends javax.swing.JFrame {
             }
         });
 
-        painelImagem.setBackground(new java.awt.Color(255, 255, 255));
+        painelImagem.setBackground(new java.awt.Color(0, 0, 0));
         painelImagem.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         painelImagem.setLayout(new java.awt.BorderLayout());
 

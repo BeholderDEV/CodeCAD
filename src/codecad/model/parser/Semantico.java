@@ -26,7 +26,7 @@ public class Semantico implements Constants
                 this.imageController.setCaminhoNovaVariavel(token.getLexeme());
             break;
             case 4:
-                this.iDEWindowController.setTamanhoTela();
+                this.imageController.setTamanhoTela();
             break;
             case 5:
                 this.imageController.setNovaVariavel();
