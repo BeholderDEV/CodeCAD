@@ -41,7 +41,6 @@ public class IDEWindowController {
         this.mainWindow.getLabelErro().setText("");
         try {
             this.sintatico.parse(lexico, semantico);
-            System.out.println("Entendeu");
         } catch (LexicalError | SyntaticError | SemanticError ex) {
             this.mainWindow.getLabelErro().setText("Erro no código!");
         }

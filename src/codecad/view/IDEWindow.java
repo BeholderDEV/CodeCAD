@@ -62,6 +62,7 @@ public class IDEWindow extends javax.swing.JFrame {
 
         areaInputCodigo.setColumns(20);
         areaInputCodigo.setRows(5);
+        areaInputCodigo.setText("\ndraw{\n\n}");
         scrollInputCodigo.setViewportView(areaInputCodigo);
 
         botaoAplicar.setText("Aplicar Código");

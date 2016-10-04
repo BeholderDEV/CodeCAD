@@ -31,6 +31,7 @@ public class ImageController {
     private Stroke stroke = new BasicStroke(1);
     private Color corLinha = Color.BLACK;
     private Color corFill = Color.BLACK;
+    private int alfa = 255;
     private Graphics2D g;
     BufferedImage imagem;
     
@@ -84,17 +85,19 @@ public class ImageController {
     }
     
     public void setColor(){
-        this.corLinha = new Color(this.parametros.get(0), this.parametros.get(1), this.parametros.get(2));
+        this.corLinha = new Color(this.parametros.get(0), this.parametros.get(1), this.parametros.get(2), this.alfa);
         this.parametros.clear();
     }
     
     public void setFill(){
-        this.corFill = new Color(this.parametros.get(0), this.parametros.get(1), this.parametros.get(2));
+        this.corFill = new Color(this.parametros.get(0), this.parametros.get(1), this.parametros.get(2), this.alfa);
         this.parametros.clear();
     }
     
     public void setOpacidade(){
-        
+        this.alfa = this.parametros.get(0);
+        this.corLinha = new Color(this.corLinha.getRed(), this.corLinha.getGreen(), this.corLinha.getBlue(), this.alfa);
+        this.corFill = new Color(this.corFill.getRed(), this.corFill.getGreen(), this.corFill.getBlue(), this.alfa);
         this.parametros.clear();
     }
     
@@ -115,12 +118,11 @@ public class ImageController {
         this.painelImagem.add(wi);
         this.painelImagem.revalidate();
         this.parametros.clear();
-        this.painelImagem.revalidate();
     }
     
     public void desenharPonto(){
         this.prepararDesenho();
-        
+        this.g.drawLine(this.parametros.get(0), this.parametros.get(1), this.parametros.get(0), this.parametros.get(1));
         this.finalizarDesenho();
     }
     
@@ -132,13 +134,19 @@ public class ImageController {
     
     public void desenharRetangulo(){
         this.prepararDesenho();
-        
+        this.g.setColor(this.corFill);
+        this.g.fillRect(this.parametros.get(0), this.parametros.get(1), this.parametros.get(2), this.parametros.get(3));
+        this.g.setColor(this.corLinha);
+        this.g.drawRect(this.parametros.get(0), this.parametros.get(1), this.parametros.get(2), this.parametros.get(3));
         this.finalizarDesenho();
     }
     
     public void desenharElipse(){
         this.prepararDesenho();
-        
+        this.g.setColor(this.corFill);
+        this.g.fillOval(this.parametros.get(0), this.parametros.get(1), this.parametros.get(2), this.parametros.get(3));
+        this.g.setColor(this.corLinha);
+        this.g.drawOval(this.parametros.get(0), this.parametros.get(1), this.parametros.get(2), this.parametros.get(3));
         this.finalizarDesenho();
     }
 }
