@@ -1,6 +1,6 @@
 package codecad.parser;
 
-import codecad.Controller.ExternalIOController;
+import codecad.controller.ExternalIOController;
 
 public class Lexico implements Constants
 {

@@ -1,6 +1,6 @@
 package codecad.parser;
 
-import codecad.Controller.ExternalIOController;
+import codecad.controller.ExternalIOController;
 import java.util.Stack;
 
 public class Sintatico implements Constants
