@@ -149,4 +149,8 @@ public class ImageController {
         this.g.drawOval(this.parametros.get(0), this.parametros.get(1), this.parametros.get(2), this.parametros.get(3));
         this.finalizarDesenho();
     }
+
+    public BufferedImage getImagem() {
+        return imagem;
+    }
 }

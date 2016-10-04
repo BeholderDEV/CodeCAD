@@ -13,8 +13,10 @@ import codecad.model.parser.LexicalError;
 import codecad.model.parser.Lexico;
 import codecad.view.CommandListWindow;
 import codecad.view.IDEWindow;
+import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JFileChooser;
 
 /**
  *
@@ -60,4 +62,18 @@ public class IDEWindowController {
         this.listWindow.setVisible(true);
     }
 
+    public void iniciarSalvamentoImagem(){
+        JFileChooser fileChooser = new JFileChooser();
+        fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+        if(fileChooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION){
+            try {
+                ExternalIOController.salvarImagem(this.imageController.getImagem(), fileChooser.getSelectedFile());
+            } catch (IOException ex) {
+                Logger.getLogger(IDEWindowController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }else{
+            return;
+        }
+    }
+    
 }

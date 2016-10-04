@@ -13,6 +13,7 @@ import codecad.model.parser.Semantico;
 import codecad.model.parser.Sintatico;
 import codecad.model.parser.SyntaticError;
 import com.alee.laf.WebLookAndFeel;
+import java.awt.BorderLayout;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JLabel;
@@ -54,11 +55,11 @@ public class IDEWindow extends javax.swing.JFrame {
         painelImagem = new javax.swing.JPanel();
         labelErro = new javax.swing.JLabel();
         botaoListar = new com.alee.laf.button.WebButton();
+        botaoLimpar = new com.alee.laf.button.WebButton();
+        botaoSalvar = new com.alee.laf.button.WebButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("CodeCAD");
-        setPreferredSize(new java.awt.Dimension(650, 650));
-        setResizable(false);
 
         areaInputCodigo.setColumns(20);
         areaInputCodigo.setRows(5);
@@ -87,6 +88,20 @@ public class IDEWindow extends javax.swing.JFrame {
             }
         });
 
+        botaoLimpar.setText("Limpar Imagem");
+        botaoLimpar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoLimparActionPerformed(evt);
+            }
+        });
+
+        botaoSalvar.setText("Salvar Imagem");
+        botaoSalvar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoSalvarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -98,7 +113,11 @@ public class IDEWindow extends javax.swing.JFrame {
                     .addComponent(scrollInputCodigo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 630, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(botaoListar, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(49, 49, 49)
+                        .addComponent(botaoLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(botaoSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(49, 49, 49)
                         .addComponent(botaoAplicar, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(painelImagem, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
@@ -115,7 +134,9 @@ public class IDEWindow extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(botaoAplicar, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(botaoListar, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(botaoListar, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(botaoLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(botaoSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -129,6 +150,16 @@ public class IDEWindow extends javax.swing.JFrame {
     private void botaoListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoListarActionPerformed
         this.controller.iniciarJanelaListarComandos();
     }//GEN-LAST:event_botaoListarActionPerformed
+
+    private void botaoLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoLimparActionPerformed
+        this.painelImagem.removeAll();
+        this.painelImagem.revalidate();
+        this.repaint();
+    }//GEN-LAST:event_botaoLimparActionPerformed
+
+    private void botaoSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoSalvarActionPerformed
+        this.controller.iniciarSalvamentoImagem();
+    }//GEN-LAST:event_botaoSalvarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -153,7 +184,9 @@ public class IDEWindow extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextArea areaInputCodigo;
     private com.alee.laf.button.WebButton botaoAplicar;
+    private com.alee.laf.button.WebButton botaoLimpar;
     private com.alee.laf.button.WebButton botaoListar;
+    private com.alee.laf.button.WebButton botaoSalvar;
     private javax.swing.JLabel labelErro;
     private javax.swing.JPanel painelImagem;
     private javax.swing.JScrollPane scrollInputCodigo;
