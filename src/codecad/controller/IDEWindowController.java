@@ -18,13 +18,14 @@ import java.util.logging.Logger;
 public class IDEWindowController {
     private IDEWindow mainWindow;
     private CommandListWindow listWindow;
-    private ImageController ImageController = new ImageController(this.mainWindow.getPainelImagem());
+    private ImageController imageController;
     private Lexico lexico = new Lexico();
     private Sintatico sintatico = new Sintatico();
-    private Semantico semantico = new Semantico(this, this.ImageController);
+    private Semantico semantico = new Semantico(this, this.imageController);
     
     public IDEWindowController(IDEWindow mainWindow) {
         this.mainWindow = mainWindow;
+        imageController = new ImageController(this.mainWindow.getPainelImagem());
         this.mainWindow.setLocationRelativeTo(null);
     }
 
@@ -40,8 +41,8 @@ public class IDEWindowController {
     }
     
     public void setTamanhoTela(){
-        this.mainWindow.setSize(this.ImageController.getParemetros().get(0), this.ImageController.getParemetros().get(1));
-        this.ImageController.limparParametros();
+        this.mainWindow.setSize(this.imageController.getParemetros().get(0), this.imageController.getParemetros().get(1));
+        this.imageController.limparParametros();
     }
     
     public void iniciarJanelaListarComandos(){
