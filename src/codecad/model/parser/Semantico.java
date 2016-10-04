@@ -1,4 +1,4 @@
-package codecad.parser;
+package codecad.model.parser;
 
 import codecad.controller.IDEWindowController;
 import codecad.controller.ImageController;
@@ -20,7 +20,7 @@ public class Semantico implements Constants
                 this.imageController.addParemetro(Integer.parseInt(token.getLexeme()));
             break;
             case 2:
-                this.imageController.verificarNomeVariavel(token.getLexeme());
+                this.imageController.setNomeNovaVariavel(token.getLexeme());
             break;
             case 3:
                 this.imageController.setCaminhoNovaVariavel(token.getLexeme());

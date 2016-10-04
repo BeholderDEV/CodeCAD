@@ -6,12 +6,12 @@
 package codecad.view;
 
 import codecad.controller.IDEWindowController;
-import codecad.parser.LexicalError;
-import codecad.parser.Lexico;
-import codecad.parser.SemanticError;
-import codecad.parser.Semantico;
-import codecad.parser.Sintatico;
-import codecad.parser.SyntaticError;
+import codecad.model.parser.LexicalError;
+import codecad.model.parser.Lexico;
+import codecad.model.parser.SemanticError;
+import codecad.model.parser.Semantico;
+import codecad.model.parser.Sintatico;
+import codecad.model.parser.SyntaticError;
 import com.alee.laf.WebLookAndFeel;
 import java.util.logging.Level;
 import java.util.logging.Logger;

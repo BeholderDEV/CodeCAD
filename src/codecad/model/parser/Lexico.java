@@ -1,4 +1,4 @@
-package codecad.parser;
+package codecad.model.parser;
 
 import codecad.controller.ExternalIOController;
 

@@ -5,7 +5,12 @@
  */
 package codecad.controller;
 
-import codecad.parser.*;
+import codecad.model.parser.Semantico;
+import codecad.model.parser.SyntaticError;
+import codecad.model.parser.SemanticError;
+import codecad.model.parser.Sintatico;
+import codecad.model.parser.LexicalError;
+import codecad.model.parser.Lexico;
 import codecad.view.CommandListWindow;
 import codecad.view.IDEWindow;
 import java.util.logging.Level;

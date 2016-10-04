@@ -1,4 +1,4 @@
-package codecad.parser;
+package codecad.model.parser;
 
 public class Token
 {
