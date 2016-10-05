@@ -64,7 +64,7 @@ public class BorderPanel extends JPanel {
             
             buttonsPanel = new JPanel();
             textPanel = new JLabel();
-            textPanel.setText("Peth Finder");
+            textPanel.setText("Code CAD");
             textPanel.setForeground(ColorController.COR_LETRA);
             textPanel.setHorizontalAlignment(JLabel.CENTER);
             
