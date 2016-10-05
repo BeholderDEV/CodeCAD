@@ -7,6 +7,7 @@ package br.beholder.codecad.ui;
 
 import br.beholder.codecad.controller.IDEWindowController;
 import br.beholder.codecad.ui.swing.webLaf.WeblafUtils;
+import br.beholder.codecad.ui.utils.ColorController;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import org.syntax.jedit.JEditTextArea;
@@ -47,7 +48,7 @@ public class MainPanel extends javax.swing.JPanel {
 "	fill 255,255,255\n" +
 "	rect 0,0,40,40\n" +
 "}");
-        codeArea.setSize(1000, 150);
+        jSplitPane1.setDividerLocation(500);
         codePanel.add(codeArea);
         this.controller = new IDEWindowController(this);
         setIcon();
@@ -69,6 +70,15 @@ public class MainPanel extends javax.swing.JPanel {
     private void configureTheme(){
         WeblafUtils.instalaWeblaf();
         WeblafUtils.configurarBotao(webButton1);
+        WeblafUtils.configuraWeblaf(codePanel);
+        WeblafUtils.configuraWeblaf(buttonsPane);
+        WeblafUtils.configuraWeblaf(imagePane);
+        codePanel.setBackground(ColorController.COR_PRINCIPAL);
+        buttonsPane.setBackground(ColorController.COR_PRINCIPAL);
+        imagePane.setBackground(ColorController.COR_PRINCIPAL);
+        this.setBackground(ColorController.COR_PRINCIPAL);
+        codeArea.setBackground(ColorController.COR_DESTAQUE);
+        codeArea.setForeground(ColorController.COR_LETRA);
     }
 
     /**
@@ -92,18 +102,25 @@ public class MainPanel extends javax.swing.JPanel {
 
         jSplitPane2.setDividerLocation(400);
         jSplitPane2.setResizeWeight(0.95);
+        jSplitPane2.setMinimumSize(new java.awt.Dimension(800, 600));
+        jSplitPane2.setPreferredSize(new java.awt.Dimension(800, 600));
 
         jSplitPane1.setDividerLocation(200);
         jSplitPane1.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
         jSplitPane1.setResizeWeight(0.8);
 
+        imagePane.setMinimumSize(new java.awt.Dimension(200, 400));
+        imagePane.setName(""); // NOI18N
+        imagePane.setPreferredSize(new java.awt.Dimension(400, 400));
         imagePane.setLayout(new java.awt.BorderLayout());
         jSplitPane1.setLeftComponent(imagePane);
 
-        codePanel.setMaximumSize(new java.awt.Dimension(2147483647, 200));
-        codePanel.setPreferredSize(new java.awt.Dimension(100, 150));
+        codePanel.setAutoscrolls(true);
+        codePanel.setMaximumSize(new java.awt.Dimension(150, 150));
+        codePanel.setMinimumSize(new java.awt.Dimension(100, 100));
         codePanel.setLayout(new java.awt.BorderLayout());
         jSplitPane1.setRightComponent(codePanel);
+        codePanel.getAccessibleContext().setAccessibleName("");
 
         jSplitPane2.setLeftComponent(jSplitPane1);
 
