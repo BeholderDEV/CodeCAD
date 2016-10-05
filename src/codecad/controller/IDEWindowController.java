@@ -40,11 +40,9 @@ public class IDEWindowController {
 
     public void iniciarLeituraCódigo(){
         this.lexico.setInput(this.mainWindow.getAreaInputCodigo().getText());
-        this.mainWindow.getLabelErro().setText("");
         try {
             this.sintatico.parse(lexico, semantico);
         } catch (LexicalError | SyntaticError | SemanticError ex) {
-            this.mainWindow.getLabelErro().setText("Erro no código!");
         }
     }
     

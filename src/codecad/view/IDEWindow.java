@@ -16,10 +16,15 @@ import com.alee.laf.WebLookAndFeel;
 import java.awt.BorderLayout;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.UnsupportedLookAndFeelException;
+import org.syntax.jedit.JEditTextArea;
+import org.syntax.jedit.KeywordMap;
+import org.syntax.jedit.tokenmarker.CodeCadTokenMarker;
+import org.syntax.jedit.tokenmarker.Token;
 
 /**
  *
@@ -27,16 +32,38 @@ import javax.swing.UnsupportedLookAndFeelException;
  */
 public class IDEWindow extends javax.swing.JFrame {
     private IDEWindowController controller;
-    
+    private JEditTextArea codeArea;
     /**
      * Creates new form IDE
      */
     public IDEWindow() {
         initComponents();
+        setExtendedState(JFrame.MAXIMIZED_BOTH);
         try {
             javax.swing.UIManager.setLookAndFeel(new WebLookAndFeel());
         } catch (UnsupportedLookAndFeelException ex) {
         }
+        codeArea = new JEditTextArea();
+        KeywordMap map = new KeywordMap(true);
+        map.add("draw", Token.KEYWORD1);
+        map.add("rect", Token.KEYWORD3);
+        map.add("elipse", Token.KEYWORD3);
+        map.add("line", Token.KEYWORD3);
+        map.add("point", Token.KEYWORD3);
+        map.add("fill", Token.KEYWORD2);
+        map.add("stroke", Token.KEYWORD2);
+        map.add("color", Token.KEYWORD2);
+        map.add("opacity", Token.KEYWORD2);
+        map.add("background", Token.KEYWORD2);
+        map.add("display", Token.KEYWORD2);
+        codeArea.setTokenMarker(new CodeCadTokenMarker(map));
+        codeArea.setText("display 800,600\n" +
+"draw{\n" +
+"	background 30,30,30\n" +
+"	fill 255,255,255\n" +
+"	rect 0,0,40,40\n" +
+"}");
+        textAreaPane.add(codeArea);
         this.controller = new IDEWindowController(this);
     }
 
@@ -49,37 +76,32 @@ public class IDEWindow extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        scrollInputCodigo = new javax.swing.JScrollPane();
-        areaInputCodigo = new javax.swing.JTextArea();
-        botaoAplicar = new com.alee.laf.button.WebButton();
         painelImagem = new javax.swing.JPanel();
-        labelErro = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        textAreaPane = new javax.swing.JPanel();
+        jPanel1 = new javax.swing.JPanel();
         botaoListar = new com.alee.laf.button.WebButton();
         botaoLimpar = new com.alee.laf.button.WebButton();
         botaoSalvar = new com.alee.laf.button.WebButton();
+        botaoAplicar = new com.alee.laf.button.WebButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("CodeCAD");
 
-        areaInputCodigo.setColumns(20);
-        areaInputCodigo.setRows(5);
-        areaInputCodigo.setText("\ndraw{\n\n}");
-        scrollInputCodigo.setViewportView(areaInputCodigo);
-
-        botaoAplicar.setText("Aplicar Código");
-        botaoAplicar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botaoAplicarActionPerformed(evt);
-            }
-        });
-
         painelImagem.setBackground(new java.awt.Color(0, 0, 0));
         painelImagem.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        painelImagem.setMinimumSize(new java.awt.Dimension(4, 400));
         painelImagem.setLayout(new java.awt.BorderLayout());
+        getContentPane().add(painelImagem, java.awt.BorderLayout.CENTER);
 
-        labelErro.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        labelErro.setForeground(new java.awt.Color(255, 51, 0));
-        labelErro.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jPanel2.setLayout(new java.awt.BorderLayout());
+
+        textAreaPane.setMinimumSize(new java.awt.Dimension(0, 100));
+        textAreaPane.setLayout(new java.awt.BorderLayout());
+        jPanel2.add(textAreaPane, java.awt.BorderLayout.CENTER);
+
+        jPanel1.setMinimumSize(new java.awt.Dimension(387, 50));
+        jPanel1.setPreferredSize(new java.awt.Dimension(140, 50));
 
         botaoListar.setText("Listar Comandos");
         botaoListar.addActionListener(new java.awt.event.ActionListener() {
@@ -87,6 +109,7 @@ public class IDEWindow extends javax.swing.JFrame {
                 botaoListarActionPerformed(evt);
             }
         });
+        jPanel1.add(botaoListar);
 
         botaoLimpar.setText("Limpar Imagem");
         botaoLimpar.addActionListener(new java.awt.event.ActionListener() {
@@ -94,6 +117,7 @@ public class IDEWindow extends javax.swing.JFrame {
                 botaoLimparActionPerformed(evt);
             }
         });
+        jPanel1.add(botaoLimpar);
 
         botaoSalvar.setText("Salvar Imagem");
         botaoSalvar.addActionListener(new java.awt.event.ActionListener() {
@@ -101,44 +125,19 @@ public class IDEWindow extends javax.swing.JFrame {
                 botaoSalvarActionPerformed(evt);
             }
         });
+        jPanel1.add(botaoSalvar);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(labelErro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(scrollInputCodigo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 630, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(botaoListar, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(49, 49, 49)
-                        .addComponent(botaoLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(botaoSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(49, 49, 49)
-                        .addComponent(botaoAplicar, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(painelImagem, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(painelImagem, javax.swing.GroupLayout.DEFAULT_SIZE, 414, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(labelErro, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(scrollInputCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(botaoAplicar, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(botaoListar, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(botaoLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(botaoSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
-        );
+        botaoAplicar.setText("Aplicar Código");
+        botaoAplicar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoAplicarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(botaoAplicar);
+
+        jPanel2.add(jPanel1, java.awt.BorderLayout.SOUTH);
+
+        getContentPane().add(jPanel2, java.awt.BorderLayout.SOUTH);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -182,26 +181,23 @@ public class IDEWindow extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextArea areaInputCodigo;
     private com.alee.laf.button.WebButton botaoAplicar;
     private com.alee.laf.button.WebButton botaoLimpar;
     private com.alee.laf.button.WebButton botaoListar;
     private com.alee.laf.button.WebButton botaoSalvar;
-    private javax.swing.JLabel labelErro;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel painelImagem;
-    private javax.swing.JScrollPane scrollInputCodigo;
+    private javax.swing.JPanel textAreaPane;
     // End of variables declaration//GEN-END:variables
 
     public JPanel getPainelImagem() {
         return painelImagem;
     }
 
-    public JTextArea getAreaInputCodigo() {
-        return areaInputCodigo;
+    public JEditTextArea getAreaInputCodigo() {
+        return codeArea;
     }
 
-    public JLabel getLabelErro() {
-        return labelErro;
-    }
 
 }
