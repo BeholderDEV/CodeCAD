@@ -1,0 +1,14 @@
+display 800,600
+draw{
+	background 245, 234, 214
+	fill 245, 234, 214
+	color 234,81,45
+	stroke 10
+	elipse 300,200,200,200
+	fill 234,81,45
+	rect 500,290,50,20
+	elipse 540,290,20,20
+	fill 68,36,11
+	color 68,36,11
+	elipse 325,225,150,150
+}

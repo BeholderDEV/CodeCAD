@@ -54,7 +54,7 @@ public class BorderPanel extends JPanel {
                 close = ImageIO.read(getClass().getResource("/br/beholder/codecad/ui/resources/window_close.png"));
                 max = ImageIO.read(getClass().getResource("/br/beholder/codecad/ui/resources/window_max.png"));
                 min = ImageIO.read(getClass().getResource("/br/beholder/codecad/ui/resources/window_min.png"));
-                icon = ImageIO.read(getClass().getResource("/br/beholder/codecad/ui/resources/icon32.png"));
+                icon = ImageIO.read(getClass().getResource("/br/beholder/codecad/ui/resources/codecadicon32.png"));
             } catch (IOException ex) {
                 Logger.getLogger(BorderPanel.class.getName()).log(Level.SEVERE, null, ex);
             }            

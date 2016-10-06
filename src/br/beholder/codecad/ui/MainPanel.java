@@ -8,6 +8,7 @@ package br.beholder.codecad.ui;
 import br.beholder.codecad.controller.IDEWindowController;
 import br.beholder.codecad.ui.swing.webLaf.WeblafUtils;
 import br.beholder.codecad.ui.utils.ColorController;
+import java.awt.Color;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import org.syntax.jedit.JEditTextArea;
@@ -79,14 +80,17 @@ public class MainPanel extends javax.swing.JPanel {
     
     private void configureTheme(){
         WeblafUtils.instalaWeblaf();
-        WeblafUtils.configurarBotao(webButton1);
-        WeblafUtils.configurarBotao(webButton2);
+        WeblafUtils.configurarBotao(webButton1, ColorController.COR_DESTAQUE, Color.white, ColorController.COR_LETRA, Color.orange, HEIGHT);
+        WeblafUtils.configurarBotao(webButton2, ColorController.COR_DESTAQUE, Color.white, ColorController.COR_LETRA, Color.orange, HEIGHT);
         WeblafUtils.configuraWeblaf(codePanel);
         WeblafUtils.configuraWeblaf(buttonsPane);
         WeblafUtils.configuraWeblaf(imagePane);
+        this.setBackground(ColorController.COR_DESTAQUE);
         codePanel.setBackground(ColorController.COR_PRINCIPAL);
-        buttonsPane.setBackground(ColorController.COR_PRINCIPAL);
-        imagePane.setBackground(ColorController.COR_PRINCIPAL);
+        jPanel2.setBackground(ColorController.COR_DESTAQUE);
+        jPanel1.setBackground(ColorController.COR_DESTAQUE);
+        buttonsPane.setBackground(ColorController.COR_DESTAQUE);
+        imagePane.setBackground(ColorController.FUNDO_ESCURO);
         this.setBackground(ColorController.COR_PRINCIPAL);
         codeArea.setBackground(ColorController.COR_DESTAQUE);
         codeArea.setForeground(ColorController.COR_LETRA);
@@ -101,6 +105,7 @@ public class MainPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel2 = new javax.swing.JPanel();
         jSplitPane1 = new javax.swing.JSplitPane();
         jPanel1 = new javax.swing.JPanel();
         imagePane = new javax.swing.JPanel();
@@ -109,8 +114,10 @@ public class MainPanel extends javax.swing.JPanel {
         webButton2 = new com.alee.laf.button.WebButton();
         codePanel = new javax.swing.JPanel();
 
-        setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 10, 10, 10));
         setLayout(new java.awt.BorderLayout());
+
+        jPanel2.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 10, 10, 10));
+        jPanel2.setLayout(new java.awt.BorderLayout());
 
         jSplitPane1.setDividerLocation(200);
         jSplitPane1.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
@@ -126,7 +133,7 @@ public class MainPanel extends javax.swing.JPanel {
 
         buttonsPane.setPreferredSize(new java.awt.Dimension(75, 100));
 
-        webButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/beholder/codecad/ui/resources/icon32.png"))); // NOI18N
+        webButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/beholder/codecad/ui/resources/drawicon32.png"))); // NOI18N
         webButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 webButton1ActionPerformed(evt);
@@ -134,7 +141,7 @@ public class MainPanel extends javax.swing.JPanel {
         });
         buttonsPane.add(webButton1);
 
-        webButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/beholder/codecad/ui/resources/icon32.png"))); // NOI18N
+        webButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/beholder/codecad/ui/resources/saveicon32.png"))); // NOI18N
         buttonsPane.add(webButton2);
 
         jPanel1.add(buttonsPane, java.awt.BorderLayout.EAST);
@@ -148,7 +155,9 @@ public class MainPanel extends javax.swing.JPanel {
         jSplitPane1.setBottomComponent(codePanel);
         codePanel.getAccessibleContext().setAccessibleName("");
 
-        add(jSplitPane1, java.awt.BorderLayout.CENTER);
+        jPanel2.add(jSplitPane1, java.awt.BorderLayout.CENTER);
+
+        add(jPanel2, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
     private void webButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_webButton1ActionPerformed
@@ -161,6 +170,7 @@ public class MainPanel extends javax.swing.JPanel {
     private javax.swing.JPanel codePanel;
     private javax.swing.JPanel imagePane;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JSplitPane jSplitPane1;
     private com.alee.laf.button.WebButton webButton1;
     private com.alee.laf.button.WebButton webButton2;
