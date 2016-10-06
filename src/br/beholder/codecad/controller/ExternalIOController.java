@@ -17,6 +17,7 @@ import java.io.InputStreamReader;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
+import javax.swing.JFileChooser;
 
 /**
  *
@@ -106,7 +107,16 @@ public class ExternalIOController {
         }
     }
     
-    public static void salvarImagem(BufferedImage imagem, File file) throws IOException{
-        ImageIO.write(imagem, "PNG", new File(file.getAbsolutePath() + "/novaImagem.png"));
+    public static void salvarImagem(BufferedImage imagem) throws IOException{
+        JFileChooser chooser = new JFileChooser();
+        chooser.setCurrentDirectory(new File("/home/me/Documents"));
+        int retrival = chooser.showSaveDialog(null);
+        if (retrival == JFileChooser.APPROVE_OPTION) {
+            try {
+                FileTransfer.saveFile(chooser.getSelectedFile().toString(), "png", imagem);
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+        }
     }
 }

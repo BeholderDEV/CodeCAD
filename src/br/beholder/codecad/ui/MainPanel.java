@@ -142,6 +142,11 @@ public class MainPanel extends javax.swing.JPanel {
         buttonsPane.add(webButton1);
 
         webButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/beholder/codecad/ui/resources/saveicon32.png"))); // NOI18N
+        webButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                webButton2ActionPerformed(evt);
+            }
+        });
         buttonsPane.add(webButton2);
 
         jPanel1.add(buttonsPane, java.awt.BorderLayout.EAST);
@@ -163,6 +168,10 @@ public class MainPanel extends javax.swing.JPanel {
     private void webButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_webButton1ActionPerformed
         this.controller.iniciarLeituraCódigo();
     }//GEN-LAST:event_webButton1ActionPerformed
+
+    private void webButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_webButton2ActionPerformed
+        this.controller.iniciarSalvamentoImagem();
+    }//GEN-LAST:event_webButton2ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

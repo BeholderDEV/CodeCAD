@@ -60,16 +60,10 @@ public class IDEWindowController {
     }
 
     public void iniciarSalvamentoImagem(){
-        JFileChooser fileChooser = new JFileChooser();
-        fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
-        if(fileChooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION){
-            try {
-                ExternalIOController.salvarImagem(this.imageController.getImagem(), fileChooser.getSelectedFile());
-            } catch (IOException ex) {
-                Logger.getLogger(IDEWindowController.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }else{
-            return;
+        try {
+            ExternalIOController.salvarImagem(this.imageController.getImagem());
+        } catch (IOException ex) {
+            Logger.getLogger(IDEWindowController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
