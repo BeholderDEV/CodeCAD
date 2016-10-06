@@ -1,0 +1,18 @@
+display 1024,768
+draw{
+	background 245, 234, 214
+	fill 255,99,71
+	color 255,99,71
+	elipse 175,24,700,700
+	color 245, 234, 214
+	stroke 100
+	elipse 321,169,400,400
+	stroke 20
+	fill 245, 234, 214
+	color 255,99,71
+	elipse 215,330,100,100
+	stroke 100
+	line  415,150, 490,300
+	stroke 0
+
+}

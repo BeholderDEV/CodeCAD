@@ -77,6 +77,7 @@ public class ImageController {
     
     public void setBackgroundColor(){
         this.prepararDesenho();
+        this.stroke = new BasicStroke(1);
         this.g.setColor(new Color(this.parametros.get(0), this.parametros.get(1), this.parametros.get(2), this.alfa));
         this.g.fillRect(0,0,imagem.getWidth(), imagem.getHeight());
         this.finalizarDesenho();
