@@ -112,8 +112,8 @@ public class BorderPanel extends JPanel {
             
             
             WeblafUtils.configurarBotao(closeButton, ColorController.FUNDO_ESCURO, ColorController.COR_LETRA,ColorController.PROGRESS_BAR, Color.orange, 5);
-            WeblafUtils.configurarBotao(minButton, ColorController.FUNDO_ESCURO, ColorController.COR_LETRA,ColorController.COR_PRINCIPAL, Color.orange, 5);
-            WeblafUtils.configurarBotao(maxButton, ColorController.FUNDO_ESCURO, ColorController.COR_LETRA,ColorController.COR_PRINCIPAL, Color.orange, 5);
+            WeblafUtils.configurarBotao(minButton, ColorController.FUNDO_ESCURO, ColorController.COR_LETRA,ColorController.FUNDO_MEDIO, Color.orange, 5);
+            WeblafUtils.configurarBotao(maxButton, ColorController.FUNDO_ESCURO, ColorController.COR_LETRA,ColorController.FUNDO_MEDIO, Color.orange, 5);
             
             buttonsPanel.add(minButton);
             buttonsPanel.add(maxButton);
