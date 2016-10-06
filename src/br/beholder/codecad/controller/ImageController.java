@@ -11,10 +11,12 @@ import com.alee.extended.image.WebImage;
 import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics2D;
+import java.awt.Image;
 import java.awt.Polygon;
 import java.awt.RenderingHints;
 import java.awt.Stroke;
 import java.awt.image.BufferedImage;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JPanel;
@@ -66,10 +68,14 @@ public class ImageController {
     }
     
     public void setNovaVariavel(){
+        ImageVariable removivel = null;
         for (ImageVariable nomeVariavel: variaveis) {
             if(nomeVariavel.getNome().equals(this.nomeNovaVariavel)){
-                this.variaveis.remove(nomeVariavel);
+                removivel = nomeVariavel;
             }
+        }
+        if(removivel != null){
+            this.variaveis.remove(removivel);
         }
         ImageVariable novaVariavel = new ImageVariable(this.nomeNovaVariavel, this.caminhoNovaVariavel);
         this.variaveis.add(novaVariavel);
@@ -84,10 +90,20 @@ public class ImageController {
         this.parametros.clear();
     }
     
-    public void desenharVariavel(){
-        
-        this.parametros.clear();
+    public void desenharVariavel() throws IOException{
+        for (ImageVariable var : this.variaveis) {
+            if(var.getNome().equals(this.nomeNovaVariavel)){
+                Image i = ExternalIOController.getImagem(var.getCaminho());
+                this.prepararDesenho();
+                this.g.drawImage(i, this.parametros.get(0), this.parametros.get(1), null);
+                this.finalizarDesenho();
+                this.parametros.clear();
+                return;
+            }
+        }
+        throw new IOException();
     }
+
     
     public void setStroke(){
         this.stroke = new BasicStroke(this.parametros.get(0));

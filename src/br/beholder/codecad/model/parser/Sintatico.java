@@ -10,14 +10,16 @@ public class Sintatico implements Constants
     private Token previousToken;
     private Lexico scanner;
     private Semantico semanticAnalyser;
-    private int [][][] PARSER_TABLE = null;
+    private int PARSER_TABLE[][][] = null;
 
     public Sintatico() {
         PARSER_TABLE = ExternalIOController.getParserTable();
     }
+
     
     public void parse(Lexico scanner, Semantico semanticAnalyser) throws LexicalError, SyntaticError, SemanticError
     {
+        
         this.scanner = scanner;
         this.semanticAnalyser = semanticAnalyser;
 

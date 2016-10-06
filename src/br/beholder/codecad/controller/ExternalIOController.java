@@ -5,6 +5,7 @@
  */
 package br.beholder.codecad.controller;
 
+import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
@@ -118,5 +119,9 @@ public class ExternalIOController {
                 ex.printStackTrace();
             }
         }
+    }
+    
+    public static Image getImagem(String caminho) throws IOException{
+        return ImageIO.read(new File(caminho));
     }
 }

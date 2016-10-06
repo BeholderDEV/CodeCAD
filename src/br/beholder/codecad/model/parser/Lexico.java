@@ -6,7 +6,7 @@ public class Lexico implements Constants
 {
     private int position;
     private String input;
-    private int [][] SCANNER_TABLE = null;
+    private int SCANNER_TABLE[][] = null;
 
     public Lexico()
     {
