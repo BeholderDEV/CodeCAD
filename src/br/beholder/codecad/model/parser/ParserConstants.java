@@ -2,7 +2,7 @@ package br.beholder.codecad.model.parser;
 
 public interface ParserConstants
 {
-    int FIRST_SEMANTIC_ACTION = 36;
+    int FIRST_SEMANTIC_ACTION = 40;
 
     int SHIFT  = 0;
     int REDUCE = 1;
@@ -13,32 +13,36 @@ public interface ParserConstants
 
     int[][] PRODUCTIONS =
     {
-        { 22, 2 },
-        { 22, 2 },
-        { 22, 4 },
-        { 23, 7 },
-        { 24, 8 },
-        { 25, 2 },
-        { 25, 2 },
-        { 25, 2 },
-        { 25, 2 },
-        { 25, 2 },
-        { 25, 2 },
-        { 25, 2 },
-        { 25, 2 },
-        { 25, 2 },
-        { 25, 2 },
-        { 25, 0 },
-        { 26, 10 },
-        { 27, 10 },
-        { 28, 4 },
+        { 24, 2 },
+        { 24, 2 },
+        { 24, 4 },
+        { 25, 7 },
+        { 26, 8 },
+        { 27, 2 },
+        { 27, 2 },
+        { 27, 2 },
+        { 27, 2 },
+        { 27, 2 },
+        { 27, 2 },
+        { 27, 2 },
+        { 27, 2 },
+        { 27, 2 },
+        { 27, 2 },
+        { 27, 2 },
+        { 27, 2 },
+        { 27, 0 },
+        { 28, 10 },
         { 29, 10 },
-        { 30, 10 },
-        { 31, 4 },
-        { 32, 7 },
-        { 33, 13 },
-        { 34, 13 },
-        { 35, 13 }
+        { 30, 4 },
+        { 31, 10 },
+        { 32, 10 },
+        { 33, 4 },
+        { 34, 7 },
+        { 35, 13 },
+        { 36, 13 },
+        { 37, 13 },
+        { 38, 19 },
+        { 39, 16 }
     };
 
     String[] PARSER_ERROR =
@@ -181,6 +185,45 @@ public interface ParserConstants
         "Erro estado 135",
         "Erro estado 136",
         "Erro estado 137",
-        "Erro estado 138"
+        "Erro estado 138",
+        "Erro estado 139",
+        "Erro estado 140",
+        "Erro estado 141",
+        "Erro estado 142",
+        "Erro estado 143",
+        "Erro estado 144",
+        "Erro estado 145",
+        "Erro estado 146",
+        "Erro estado 147",
+        "Erro estado 148",
+        "Erro estado 149",
+        "Erro estado 150",
+        "Erro estado 151",
+        "Erro estado 152",
+        "Erro estado 153",
+        "Erro estado 154",
+        "Erro estado 155",
+        "Erro estado 156",
+        "Erro estado 157",
+        "Erro estado 158",
+        "Erro estado 159",
+        "Erro estado 160",
+        "Erro estado 161",
+        "Erro estado 162",
+        "Erro estado 163",
+        "Erro estado 164",
+        "Erro estado 165",
+        "Erro estado 166",
+        "Erro estado 167",
+        "Erro estado 168",
+        "Erro estado 169",
+        "Erro estado 170",
+        "Erro estado 171",
+        "Erro estado 172",
+        "Erro estado 173",
+        "Erro estado 174",
+        "Erro estado 175",
+        "Erro estado 176",
+        "Erro estado 177"
     };
 }

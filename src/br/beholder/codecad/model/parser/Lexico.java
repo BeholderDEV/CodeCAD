@@ -7,7 +7,7 @@ public class Lexico implements Constants
     private int position;
     private String input;
     private int [][] SCANNER_TABLE = null;
-    
+
     public Lexico()
     {
         this("");
@@ -15,7 +15,7 @@ public class Lexico implements Constants
 
     public Lexico(String input)
     {
-        this.SCANNER_TABLE = ExternalIOController.getScannerTable();
+        SCANNER_TABLE = ExternalIOController.getScannerTable();
         setInput(input);
     }
 

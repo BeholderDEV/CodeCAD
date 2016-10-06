@@ -11,6 +11,7 @@ import com.alee.extended.image.WebImage;
 import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics2D;
+import java.awt.Polygon;
 import java.awt.RenderingHints;
 import java.awt.Stroke;
 import java.awt.image.BufferedImage;
@@ -146,6 +147,31 @@ public class ImageController {
         this.g.fillRect(this.parametros.get(0), this.parametros.get(1), this.parametros.get(2), this.parametros.get(3));
         this.g.setColor(this.corLinha);
         this.g.drawRect(this.parametros.get(0), this.parametros.get(1), this.parametros.get(2), this.parametros.get(3));
+        this.finalizarDesenho();
+    }
+    public void desenharTriangulo(){
+        this.prepararDesenho();
+        this.g.setColor(this.corFill);
+        int [] x = new int[3];
+        x[0]=this.parametros.get(0);
+        x[1]=this.parametros.get(2);
+        x[2]=this.parametros.get(4);
+        int [] y = new int[3];
+        y[0]=this.parametros.get(1);
+        y[1]=this.parametros.get(3);
+        y[2]=this.parametros.get(5);
+        Polygon p = new Polygon(x,y,3);
+        this.g.fillPolygon(p);
+        this.g.setColor(this.corLinha);
+        this.g.drawPolygon(p);
+        this.finalizarDesenho();
+    }
+    public void desenharRetanguloArredondado(){
+        this.prepararDesenho();
+        this.g.setColor(this.corFill);
+        g.fillRoundRect(this.parametros.get(0), this.parametros.get(1), this.parametros.get(2), this.parametros.get(3),this.parametros.get(4),this.parametros.get(4));
+        this.g.setColor(this.corLinha);
+        g.drawRoundRect(this.parametros.get(0), this.parametros.get(1), this.parametros.get(2), this.parametros.get(3),this.parametros.get(4),this.parametros.get(4));
         this.finalizarDesenho();
     }
     

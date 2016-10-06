@@ -61,6 +61,12 @@ public class Semantico implements Constants
             case 15:
                 this.imageController.desenharElipse();
             break;
+            case 16:
+                this.imageController.desenharTriangulo();
+            break;
+            case 17:
+                this.imageController.desenharRetanguloArredondado();
+            break;
         }
     }	
 }
