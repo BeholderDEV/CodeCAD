@@ -7,7 +7,7 @@ ParserName = Sintatico
 SemanticName = Semantico
 Package = br.beholder.codecad.model.parser
 ScannerCaseSensitive = true
-ScannerTable = Full
+ScannerTable = Compact
 Input = String
 Parser = SLR
 #RegularDefinitions
