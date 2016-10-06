@@ -4,6 +4,7 @@
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="2"/>
     <Property name="title" type="java.lang.String" value="Lista de Comandos"/>
+    <Property name="resizable" type="boolean" value="false"/>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
@@ -24,13 +25,15 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="botaoFechar" alignment="1" pref="400" max="32767" attributes="0"/>
+          <Component id="botaoFechar" pref="467" max="32767" attributes="0"/>
+          <Component id="jScrollPane1" alignment="0" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="1" attributes="0">
-              <EmptySpace min="0" pref="363" max="32767" attributes="0"/>
+              <Component id="jScrollPane1" pref="352" max="32767" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="botaoFechar" min="-2" pref="37" max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -45,5 +48,29 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botaoFecharActionPerformed"/>
       </Events>
     </Component>
+    <Container class="javax.swing.JScrollPane" name="jScrollPane1">
+      <Properties>
+        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+          <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
+            <EmptyBorder/>
+          </Border>
+        </Property>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+      </AuxValues>
+
+      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+      <SubComponents>
+        <Component class="javax.swing.JTextArea" name="jTextArea1">
+          <Properties>
+            <Property name="editable" type="boolean" value="false"/>
+            <Property name="columns" type="int" value="20"/>
+            <Property name="rows" type="int" value="5"/>
+            <Property name="text" type="java.lang.String" value="Fixar o tamanho da image: display int, int&#xa;Criar v&#xe1;riavel com alguma imagem: nome_da_variavel = &quot;caminho_do_arquivo&quot;&#xa;Observa&#xe7;&#xe3;o: (Espa&#xe7;os no caminho da imagem n&#xe3;o s&#xe3;o permitidos)&#xa;&#xa;Desenhar algo na tela: (Necess&#xe1;rio para o c&#xf3;digo rodar)&#xa;&#xa;draw{&#xa;   Definir stroke: stroke int&#xa;   Definir opacidade: opacity int&#xa;   Definir cor de linha: color int, int, int&#xa;   Definir cor de preenchimento: fill int, int, int&#xa;   Definir cor de fundo (Sobrep&#xf4;e a imagem): background int, int, int &#xa;   Desenhar imagem de vari&#xe1;vel: drawImage nome_da_variavel, int, int&#xa;   Desenhar ponto: point int, int&#xa;   Desenhar linha: line int, int, int, int&#xa;   Desenhar ret&#xe2;ngulo: rect int,int,int,int&#xa;   Desenhar elipse: elipse int, int, int, int&#xa;   Desenhar tri&#xe2;ngulo: triangle int, int, int, int, int, int &#xa;}&#xa;"/>
+          </Properties>
+        </Component>
+      </SubComponents>
+    </Container>
   </SubComponents>
 </Form>

@@ -5,15 +5,13 @@
  */
 package codecad.view;
 
+import codecad.controller.ExternalIOController;
 import codecad.controller.IDEWindowController;
-import codecad.model.parser.LexicalError;
-import codecad.model.parser.Lexico;
-import codecad.model.parser.SemanticError;
-import codecad.model.parser.Semantico;
-import codecad.model.parser.Sintatico;
-import codecad.model.parser.SyntaticError;
 import com.alee.laf.WebLookAndFeel;
-import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Image;
+import java.io.IOException;
+import java.net.URL;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JLabel;
@@ -37,9 +35,33 @@ public class IDEWindow extends javax.swing.JFrame {
             javax.swing.UIManager.setLookAndFeel(new WebLookAndFeel());
         } catch (UnsupportedLookAndFeelException ex) {
         }
+        this.getContentPane().setBackground(Color.WHITE);
+        this.setButtonColor(this.botaoAplicar, Color.WHITE, Color.WHITE, new Color(75,0,130), Color.GREEN, new Color(75,0,130), Color.GREEN);
+        this.setButtonColor(this.botaoLimpar, Color.WHITE, Color.WHITE, new Color(75,0,130), Color.GREEN, new Color(75,0,130), Color.GREEN);
+        this.setButtonColor(this.botaoListar, Color.WHITE, Color.WHITE, new Color(75,0,130), Color.GREEN, new Color(75,0,130), Color.GREEN);
+        this.setButtonColor(this.botaoSalvar, Color.WHITE, Color.WHITE, new Color(75,0,130), Color.GREEN, new Color(75,0,130), Color.GREEN);
+        this.codeArea.setTabSize(4);
+        URL urlIcon = getClass().getResource("/Touhou_Sakuya_Icon.png");
+        Image frameIcon = null;
+        try {
+            frameIcon = ExternalIOController.getImagem(urlIcon);
+        } catch (IOException ex) {
+            Logger.getLogger(IDEWindow.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        this.setIconImage(frameIcon.getScaledInstance(32, 32, Image.SCALE_SMOOTH));
+        this.repaint();
         this.controller = new IDEWindowController(this);
     }
-
+    
+    private void setButtonColor(com.alee.laf.button.WebButton b, Color fore, Color selFor, Color top, Color topSel, Color bot, Color botSel){
+        b.setForeground (fore);
+        b.setSelectedForeground (selFor);
+        b.setTopBgColor (top);
+        b.setTopSelectedBgColor (topSel);
+        b.setBottomBgColor (bot);
+        b.setBottomSelectedBgColor (botSel);
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -49,22 +71,18 @@ public class IDEWindow extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        scrollInputCodigo = new javax.swing.JScrollPane();
-        areaInputCodigo = new javax.swing.JTextArea();
         botaoAplicar = new com.alee.laf.button.WebButton();
         painelImagem = new javax.swing.JPanel();
         labelErro = new javax.swing.JLabel();
         botaoListar = new com.alee.laf.button.WebButton();
         botaoLimpar = new com.alee.laf.button.WebButton();
         botaoSalvar = new com.alee.laf.button.WebButton();
+        scrollCode = new javax.swing.JScrollPane();
+        codeArea = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("CodeCAD");
-
-        areaInputCodigo.setColumns(20);
-        areaInputCodigo.setRows(5);
-        areaInputCodigo.setText("\ndraw{\n\n}");
-        scrollInputCodigo.setViewportView(areaInputCodigo);
+        setMinimumSize(new java.awt.Dimension(700, 700));
 
         botaoAplicar.setText("Aplicar Código");
         botaoAplicar.addActionListener(new java.awt.event.ActionListener() {
@@ -73,12 +91,12 @@ public class IDEWindow extends javax.swing.JFrame {
             }
         });
 
-        painelImagem.setBackground(new java.awt.Color(0, 0, 0));
-        painelImagem.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        painelImagem.setBackground(new java.awt.Color(255, 255, 255));
+        painelImagem.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(204, 0, 0), new java.awt.Color(255, 51, 51)));
         painelImagem.setLayout(new java.awt.BorderLayout());
 
-        labelErro.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        labelErro.setForeground(new java.awt.Color(255, 51, 0));
+        labelErro.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        labelErro.setForeground(new java.awt.Color(102, 0, 255));
         labelErro.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
         botaoListar.setText("Listar Comandos");
@@ -102,6 +120,14 @@ public class IDEWindow extends javax.swing.JFrame {
             }
         });
 
+        scrollCode.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(255, 102, 102), new java.awt.Color(255, 51, 51)));
+
+        codeArea.setColumns(20);
+        codeArea.setFont(new java.awt.Font("Courier New", 0, 22)); // NOI18N
+        codeArea.setRows(5);
+        codeArea.setText("\ndraw {\n\n}");
+        scrollCode.setViewportView(codeArea);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -109,16 +135,16 @@ public class IDEWindow extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(scrollCode)
                     .addComponent(labelErro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(scrollInputCodigo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 630, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(botaoListar, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(botaoListar, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(46, 46, 46)
+                        .addComponent(botaoLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 65, Short.MAX_VALUE)
+                        .addComponent(botaoSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(49, 49, 49)
-                        .addComponent(botaoLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(botaoSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(49, 49, 49)
-                        .addComponent(botaoAplicar, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(botaoAplicar, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(painelImagem, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -126,12 +152,12 @@ public class IDEWindow extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(painelImagem, javax.swing.GroupLayout.DEFAULT_SIZE, 414, Short.MAX_VALUE)
+                .addComponent(painelImagem, javax.swing.GroupLayout.DEFAULT_SIZE, 473, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(labelErro, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(scrollInputCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(scrollCode, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(botaoAplicar, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(botaoListar, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -152,9 +178,7 @@ public class IDEWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_botaoListarActionPerformed
 
     private void botaoLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoLimparActionPerformed
-        this.painelImagem.removeAll();
-        this.painelImagem.revalidate();
-        this.repaint();
+        this.controller.limparImagem();
     }//GEN-LAST:event_botaoLimparActionPerformed
 
     private void botaoSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoSalvarActionPerformed
@@ -182,26 +206,26 @@ public class IDEWindow extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextArea areaInputCodigo;
     private com.alee.laf.button.WebButton botaoAplicar;
     private com.alee.laf.button.WebButton botaoLimpar;
     private com.alee.laf.button.WebButton botaoListar;
     private com.alee.laf.button.WebButton botaoSalvar;
+    private javax.swing.JTextArea codeArea;
     private javax.swing.JLabel labelErro;
     private javax.swing.JPanel painelImagem;
-    private javax.swing.JScrollPane scrollInputCodigo;
+    private javax.swing.JScrollPane scrollCode;
     // End of variables declaration//GEN-END:variables
 
     public JPanel getPainelImagem() {
         return painelImagem;
     }
 
-    public JTextArea getAreaInputCodigo() {
-        return areaInputCodigo;
-    }
-
     public JLabel getLabelErro() {
         return labelErro;
     }
 
+    public JTextArea getCodeArea() {
+        return codeArea;
+    }
+    
 }

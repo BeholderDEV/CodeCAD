@@ -2,7 +2,7 @@ package codecad.model.parser;
 
 public interface ParserConstants
 {
-    int FIRST_SEMANTIC_ACTION = 36;
+    int FIRST_SEMANTIC_ACTION = 37;
 
     int SHIFT  = 0;
     int REDUCE = 1;
@@ -28,6 +28,7 @@ public interface ParserConstants
         { 25, 2 },
         { 25, 2 },
         { 25, 2 },
+        { 25, 2 },
         { 25, 0 },
         { 26, 10 },
         { 27, 10 },
@@ -38,7 +39,8 @@ public interface ParserConstants
         { 32, 7 },
         { 33, 13 },
         { 34, 13 },
-        { 35, 13 }
+        { 35, 13 },
+        { 36, 19 }
     };
 
     String[] PARSER_ERROR =
@@ -181,6 +183,27 @@ public interface ParserConstants
         "Erro estado 135",
         "Erro estado 136",
         "Erro estado 137",
-        "Erro estado 138"
+        "Erro estado 138",
+        "Erro estado 139",
+        "Erro estado 140",
+        "Erro estado 141",
+        "Erro estado 142",
+        "Erro estado 143",
+        "Erro estado 144",
+        "Erro estado 145",
+        "Erro estado 146",
+        "Erro estado 147",
+        "Erro estado 148",
+        "Erro estado 149",
+        "Erro estado 150",
+        "Erro estado 151",
+        "Erro estado 152",
+        "Erro estado 153",
+        "Erro estado 154",
+        "Erro estado 155",
+        "Erro estado 156",
+        "Erro estado 157",
+        "Erro estado 158",
+        "Erro estado 159"
     };
 }

@@ -6,6 +6,7 @@
 package codecad.view;
 
 import com.alee.laf.WebLookAndFeel;
+import java.awt.Color;
 import javax.swing.UnsupportedLookAndFeelException;
 
 /**
@@ -23,8 +24,20 @@ public class CommandListWindow extends javax.swing.JFrame {
             javax.swing.UIManager.setLookAndFeel(new WebLookAndFeel());
         } catch (UnsupportedLookAndFeelException ex) {
         }
+        this.getContentPane().setBackground(Color.WHITE);
+        this.botaoFechar.setFontSize(18);
+        this.setButtonColor(this.botaoFechar, Color.WHITE, Color.WHITE, new Color(50,0,100), Color.GREEN, new Color(50,0,100), Color.GREEN);
     }
 
+    private void setButtonColor(com.alee.laf.button.WebButton b, Color fore, Color selFor, Color top, Color topSel, Color bot, Color botSel){
+        b.setForeground (fore);
+        b.setSelectedForeground (selFor);
+        b.setTopBgColor (top);
+        b.setTopSelectedBgColor (topSel);
+        b.setBottomBgColor (bot);
+        b.setBottomSelectedBgColor (botSel);
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -35,9 +48,12 @@ public class CommandListWindow extends javax.swing.JFrame {
     private void initComponents() {
 
         botaoFechar = new com.alee.laf.button.WebButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Lista de Comandos");
+        setResizable(false);
 
         botaoFechar.setText("Fechar");
         botaoFechar.addActionListener(new java.awt.event.ActionListener() {
@@ -46,16 +62,26 @@ public class CommandListWindow extends javax.swing.JFrame {
             }
         });
 
+        jScrollPane1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+
+        jTextArea1.setEditable(false);
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jTextArea1.setText("Fixar o tamanho da image: display int, int\nCriar váriavel com alguma imagem: nome_da_variavel = \"caminho_do_arquivo\"\nObservação: (Espaços no caminho da imagem não são permitidos)\n\nDesenhar algo na tela: (Necessário para o código rodar)\n\ndraw{\n   Definir stroke: stroke int\n   Definir opacidade: opacity int\n   Definir cor de linha: color int, int, int\n   Definir cor de preenchimento: fill int, int, int\n   Definir cor de fundo (Sobrepôe a imagem): background int, int, int \n   Desenhar imagem de variável: drawImage nome_da_variavel, int, int\n   Desenhar ponto: point int, int\n   Desenhar linha: line int, int, int, int\n   Desenhar retângulo: rect int,int,int,int\n   Desenhar elipse: elipse int, int, int, int\n   Desenhar triângulo: triangle int, int, int, int, int, int \n}\n");
+        jScrollPane1.setViewportView(jTextArea1);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(botaoFechar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
+            .addComponent(botaoFechar, javax.swing.GroupLayout.DEFAULT_SIZE, 467, Short.MAX_VALUE)
+            .addComponent(jScrollPane1)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 363, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 352, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(botaoFechar, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -103,5 +129,7 @@ public class CommandListWindow extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private com.alee.laf.button.WebButton botaoFechar;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextArea jTextArea1;
     // End of variables declaration//GEN-END:variables
 }

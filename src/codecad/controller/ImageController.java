@@ -11,9 +11,12 @@ import com.alee.extended.image.WebImage;
 import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics2D;
+import java.awt.Image;
+import java.awt.Polygon;
 import java.awt.RenderingHints;
 import java.awt.Stroke;
 import java.awt.image.BufferedImage;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JPanel;
@@ -56,8 +59,20 @@ public class ImageController {
     }
     
     public void setTamanhoTela(){
-        imagem = new BufferedImage(parametros.get(0), parametros.get(1), BufferedImage.TYPE_INT_ARGB);
-        parametros.clear();
+        if(this.imagem == null){
+            this.imagem = new BufferedImage(this.parametros.get(0), this.parametros.get(1), BufferedImage.TYPE_4BYTE_ABGR);
+            this.finalizarDesenho();
+            return;
+        }
+        BufferedImage newImage = new BufferedImage(this.parametros.get(0), this.parametros.get(1), BufferedImage.TYPE_4BYTE_ABGR);
+        Image i = this.imagem.getScaledInstance(this.parametros.get(0), this.parametros.get(1), Image.SCALE_SMOOTH);
+        this.g = (Graphics2D) newImage.getGraphics();
+        this.g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+        this.g.drawImage(i, 0, 0, null);
+        this.imagem = newImage;
+        this.prepararDesenho();
+        this.finalizarDesenho();
+        this.parametros.clear();
     }
     
     public void setCaminhoNovaVariavel(String caminho){
@@ -65,10 +80,14 @@ public class ImageController {
     }
     
     public void setNovaVariavel(){
+        ImageVariable removivel = null;
         for (ImageVariable nomeVariavel: variaveis) {
             if(nomeVariavel.getNome().equals(this.nomeNovaVariavel)){
-                this.variaveis.remove(nomeVariavel);
+                removivel = nomeVariavel;
             }
+        }
+        if(removivel != null){
+            this.variaveis.remove(removivel);
         }
         ImageVariable novaVariavel = new ImageVariable(this.nomeNovaVariavel, this.caminhoNovaVariavel);
         this.variaveis.add(novaVariavel);
@@ -82,9 +101,18 @@ public class ImageController {
         this.parametros.clear();
     }
     
-    public void desenharVariavel(){
-        
-        this.parametros.clear();
+    public void desenharVariavel() throws IOException{
+        for (ImageVariable var : this.variaveis) {
+            if(var.getNome().equals(this.nomeNovaVariavel)){
+                Image i = ExternalIOController.getImagem(var.getCaminho());
+                this.prepararDesenho();
+                this.g.drawImage(i, this.parametros.get(0), this.parametros.get(1), null);
+                this.finalizarDesenho();
+                this.parametros.clear();
+                return;
+            }
+        }
+        throw new IOException();
     }
     
     public void setStroke(){
@@ -110,7 +138,7 @@ public class ImageController {
     }
     
     private void prepararDesenho(){
-        if(imagem == null){
+        if(this.imagem == null){
             this.imagem = new BufferedImage(this.painelImagem.getWidth(), this.painelImagem.getHeight(), BufferedImage.TYPE_4BYTE_ABGR);
         }
         this.painelImagem.removeAll();
@@ -158,7 +186,24 @@ public class ImageController {
         this.finalizarDesenho();
     }
 
+    public void desenharTriangulo(){
+        System.out.println("asdadas");
+        this.prepararDesenho();
+        int x[] = {this.parametros.get(0), this.parametros.get(2), this.parametros.get(4)};
+        int y[] = {this.parametros.get(1), this.parametros.get(3), this.parametros.get(5)};
+        Polygon p = new Polygon(x, y, x.length);
+        this.g.setColor(this.corFill);
+        this.g.fillPolygon(p);
+        this.g.setColor(this.corLinha);
+        this.g.drawPolygon(p);
+        this.finalizarDesenho();
+    }
+    
     public BufferedImage getImagem() {
         return imagem;
+    }
+
+    public void setImagem(BufferedImage imagem) {
+        this.imagem = imagem;
     }
 }

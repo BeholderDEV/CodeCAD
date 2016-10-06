@@ -32,6 +32,7 @@ public class IDEWindowController {
     
     public IDEWindowController(IDEWindow mainWindow) {
         this.mainWindow = mainWindow;
+        this.mainWindow.setSize(700, 720);
         this.imageController = new ImageController(this.mainWindow.getPainelImagem());
         this.semantico = new Semantico(this, this.imageController);
         this.sintatico = new Sintatico();
@@ -39,7 +40,7 @@ public class IDEWindowController {
     }
 
     public void iniciarLeituraCódigo(){
-        this.lexico.setInput(this.mainWindow.getAreaInputCodigo().getText());
+        this.lexico.setInput(this.mainWindow.getCodeArea().getText());
         this.mainWindow.getLabelErro().setText("");
         try {
             this.sintatico.parse(lexico, semantico);
@@ -74,6 +75,17 @@ public class IDEWindowController {
         }else{
             return;
         }
+    }
+    
+    public void limparImagem(){
+        this.imageController.setImagem(null);
+        this.mainWindow.getPainelImagem().removeAll();
+        this.mainWindow.getPainelImagem().revalidate();
+        this.mainWindow.repaint();
+    }
+    
+    public void erroImagem(){
+        this.mainWindow.getLabelErro().setText("Erro na Imagem");
     }
     
 }

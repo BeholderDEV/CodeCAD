@@ -2,6 +2,7 @@ package codecad.model.parser;
 
 import codecad.controller.IDEWindowController;
 import codecad.controller.ImageController;
+import java.io.IOException;
 
 public class Semantico implements Constants
 {
@@ -35,7 +36,11 @@ public class Semantico implements Constants
                 this.imageController.setBackgroundColor();
             break;
             case 7:
-                this.imageController.desenharVariavel();
+                try {
+                    this.imageController.desenharVariavel();
+                } catch (IOException ex) {
+                    this.iDEWindowController.erroImagem();
+                }
             break;
             case 8:
                 this.imageController.setStroke();
@@ -60,6 +65,9 @@ public class Semantico implements Constants
             break;
             case 15:
                 this.imageController.desenharElipse();
+            break;
+            case 16:
+                this.imageController.desenharTriangulo();
             break;
         }
     }	

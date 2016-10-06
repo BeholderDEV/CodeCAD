@@ -22,8 +22,7 @@ public interface Constants extends ScannerConstants, ParserConstants
     int t_COMANDO_LINHA = 16;
     int t_COMANDO_RECT = 17;
     int t_COMANDO_ELIPSE = 18;
-    int t_INTEIRO = 19;
-    int t_VARIAVEL = 20;
+    int t_COMANDO_TRIANGULO = 19;
+    int t_INTEIRO = 20;
     int t_STRING = 21;
-
 }
