@@ -2,14 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/C:/Users/lite/Documents/Github/CodeCAD/src/br/beholder/codecad/controller/ImageController.java</file>
-            <file>file:/C:/Users/lite/Documents/Github/CodeCAD/src/br/beholder/codecad/ui/MainPanel.java</file>
-            <file>file:/C:/Users/lite/Documents/Github/CodeCAD/src/br/beholder/codecad/controller/IDEWindowController.java</file>
-            <file>file:/C:/Users/lite/Documents/Github/CodeCAD/src/br/beholder/codecad/ui/utils/ColorController.java</file>
-            <file>file:/C:/Users/lite/Documents/Github/CodeCAD/src/br/beholder/codecad/ui/window/BorderPanel.java</file>
-            <file>file:/C:/Users/lite/Documents/Github/CodeCAD/src/br/beholder/codecad/view/IDEWindow.java</file>
-            <file>file:/C:/Users/lite/Documents/Github/CodeCAD/src/br/beholder/codecad/controller/FileTransfer.java</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>

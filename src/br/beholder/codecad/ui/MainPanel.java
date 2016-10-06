@@ -38,6 +38,7 @@ public class MainPanel extends javax.swing.JPanel {
         map.add("triangle", Token.KEYWORD3);
         map.add("line", Token.KEYWORD3);
         map.add("point", Token.KEYWORD3);
+        map.add("drawImage", Token.KEYWORD3);
         map.add("fill", Token.KEYWORD2);
         map.add("stroke", Token.KEYWORD2);
         map.add("color", Token.KEYWORD2);

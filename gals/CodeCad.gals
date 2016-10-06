@@ -7,13 +7,12 @@ ParserName = Sintatico
 SemanticName = Semantico
 Package = br.beholder.codecad.model.parser
 ScannerCaseSensitive = true
-ScannerTable = Compact
+ScannerTable = Full
 Input = String
 Parser = SLR
 #RegularDefinitions
-var:[a-z0-9\-A-Z]+
 int: [0-9]+
-str:[a-z0-9\-A-Z\.]+
+str:[a-z0-9\-A-Z\./:\\_]+
 ignore:[\s\n\r\t]+
 #Tokens
 :{ignore}
@@ -37,7 +36,6 @@ COMANDO_ELIPSE: elipse
 COMANDO_TRIANG: triangle
 COMANDO_ROUNDRECT: roundrect
 INTEIRO: {int}
-VARIAVEL: {var}
 STRING: {str}
 #NonTerminals
 <S>
@@ -59,10 +57,10 @@ STRING: {str}
 #Grammar
 <S> ::= <A><S> | <B><S> | COMANDO_DESENHA ABRE_CHAVE <C> FECHA_CHAVE;
 <A> ::= COMANDO_SET_DISPLAY INTEIRO#1 VIRGULA INTEIRO#1 #4;
-<B> ::= VARIAVEL#2 IGUAL ASPA STRING#3 ASPA #5;
+<B> ::= STRING#2 IGUAL ASPA STRING#3 ASPA #5;
 <C> ::= <D><C>|<E><C>|<F><C>|<G><C>|<H><C>|<I><C>|<J><C>|<K><C>|<L><C>|<M><C> |<N><C> | <O><C>|î;
 <D> ::= COMANDO_BG INTEIRO#1 VIRGULA INTEIRO#1 VIRGULA INTEIRO#1 #6;
-<E> ::= COMANDO_DRAW_IMAGE VARIAVEL#2 VIRGULA INTEIRO#1 VIRGULA INTEIRO#1 #7;
+<E> ::= COMANDO_DRAW_IMAGE STRING#2 VIRGULA INTEIRO#1 VIRGULA INTEIRO#1 #7;
 <F> ::= COMANDO_STROKE INTEIRO#1 #8;
 <G> ::= COMANDO_COLOR INTEIRO#1 VIRGULA INTEIRO#1 VIRGULA INTEIRO#1 #9;
 <H> ::= COMANDO_FILL INTEIRO#1 VIRGULA INTEIRO#1 VIRGULA INTEIRO#1 #10;

@@ -12,11 +12,9 @@ import br.beholder.codecad.model.parser.Sintatico;
 import br.beholder.codecad.model.parser.LexicalError;
 import br.beholder.codecad.model.parser.Lexico;
 import br.beholder.codecad.ui.MainPanel;
-import br.beholder.codecad.view.CommandListWindow;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JFileChooser;
 
 /**
  *
@@ -24,7 +22,6 @@ import javax.swing.JFileChooser;
  */
 public class IDEWindowController {
     private MainPanel mainWindow;
-    private CommandListWindow listWindow;
     private ImageController imageController;
     private Lexico lexico = new Lexico();
     private Sintatico sintatico;
@@ -50,15 +47,6 @@ public class IDEWindowController {
         this.imageController.limparParametros();
     }
     
-    public void iniciarJanelaListarComandos(){
-        if(this.listWindow != null){
-            this.listWindow.dispose();
-        }
-        this.listWindow = new CommandListWindow();
-        this.listWindow.setLocationRelativeTo(this.mainWindow);
-        this.listWindow.setVisible(true);
-    }
-
     public void iniciarSalvamentoImagem(){
         try {
             ExternalIOController.salvarImagem(this.imageController.getImagem());

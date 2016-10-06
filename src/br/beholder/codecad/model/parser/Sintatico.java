@@ -17,9 +17,9 @@ public class Sintatico implements Constants
     }
 
     
+    
     public void parse(Lexico scanner, Semantico semanticAnalyser) throws LexicalError, SyntaticError, SemanticError
     {
-        
         this.scanner = scanner;
         this.semanticAnalyser = semanticAnalyser;
 
